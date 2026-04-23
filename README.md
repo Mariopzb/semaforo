@@ -1,10 +1,10 @@
-# 🤖 Puzzlebot — Autonomous Navigation & Traffic Light Detection
+# Puzzlebot — Autonomous Navigation & Traffic Light Detection
 
 > **ROS2-based autonomous robot system** featuring closed-loop control, odometry estimation, path following, and real-time traffic light detection using computer vision.
 
 ---
 
-## 📦 Repository Structure
+##  Repository Structure
 
 ```
 📁 puzzlebot/
@@ -16,7 +16,7 @@
 
 ---
 
-## 🧭 Node Overview
+##  Node Overview
 
 ```
 /VelocityEncR ──┐
@@ -36,11 +36,11 @@
 
 ---
 
-## 🔧 Nodes
+##  Nodes
 
 ---
 
-### 📐 `turtle_odometry.py` — Odometry Node
+###  `turtle_odometry.py` — Odometry Node
 
 Estimates the robot's pose `(x, y, θ)` from wheel encoder velocities using differential drive kinematics.
 
@@ -74,7 +74,7 @@ y     += dt * v * sin(θ)
 
 ---
 
-### 🎯 `turtle_closeloop.py` — Closed-Loop Controller
+### `turtle_closeloop.py` — Closed-Loop Controller
 
 State machine controller that navigates the robot to waypoints using proportional control for both angle and distance.
 
@@ -107,7 +107,7 @@ tolerance_angle    = 0.03     # Angle threshold (rad)
 
 ---
 
-### 🗺️ `path_generator.py` — Path Generator
+###  `path_generator.py` — Path Generator
 
 Publishes sequential waypoints to guide the robot through a predefined path. Advances to the next waypoint automatically once the robot is within the tolerance threshold.
 
@@ -125,15 +125,15 @@ Publishes sequential waypoints to guide the robot through a predefined path. Adv
 
 | Shape | Waypoints |
 |---|---|
-| ⬛ Square | `(2,0) → (2,2) → (0,2) → (0,0)` |
-| 🔺 Triangle | `(2,0) → (1, 1.732) → (0,0)` |
-| 🔷 Trapezoid | `(2,0) → (1.5,1) → (0.5,1) → (0,0)` |
+|  Square | `(2,0) → (2,2) → (0,2) → (0,0)` |
+|  Triangle | `(2,0) → (1, 1.732) → (0,0)` |
+|  Trapezoid | `(2,0) → (1.5,1) → (0.5,1) → (0,0)` |
 
 To switch shapes, uncomment the desired `point_list` in `__init__`.
 
 ---
 
-### 🚦 `semaforo.py` — Traffic Light Supervisor
+###  `semaforo.py` — Traffic Light Supervisor
 
 Intercepts velocity commands and modulates them based on real-time traffic light detection via HSV color segmentation. Implements a **sequential state machine** that enforces the correct Green → Yellow → Red → Green cycle.
 
@@ -160,9 +160,9 @@ Intercepts velocity commands and modulates them based on real-time traffic light
 **Speed Multipliers**
 | State | Multiplier | Behavior |
 |---|---|---|
-| 🟢 GREEN | `1.0` | Full speed |
-| 🟡 YELLOW | `0.5` | Slow down |
-| 🔴 RED | `0.0` | Full stop |
+|  GREEN | `1.0` | Full speed |
+|  YELLOW | `0.5` | Slow down |
+|  RED | `0.0` | Full stop |
 
 **Transition Guards**
 - `GREEN → YELLOW` requires yellow **without** green (prevents HSV overlap false positives)
@@ -178,7 +178,7 @@ Red:     H[0–10]  + H[170–180]  S[150–255]  V[120–255]
 
 ---
 
-## 🚀 Running the System
+##  Running the System
 
 Launch all nodes in separate terminals:
 
@@ -198,7 +198,7 @@ ros2 run <package> semaforo.py
 
 ---
 
-## 🛠️ Dependencies
+##  Dependencies
 
 - ROS2 (Humble or later)
 - `rclpy`
@@ -214,7 +214,7 @@ sudo apt install ros-humble-cv-bridge
 
 ---
 
-## 📌 Notes
+##  Notes
 
 - The odometry node uses `time.time()` for `dt` — make sure system clock is stable.
 - Color thresholds may need tuning depending on lighting conditions and camera model.

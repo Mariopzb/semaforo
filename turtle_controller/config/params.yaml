@@ -1,0 +1,19 @@
+
+path_generator:
+  ros__parameters:
+    point_list: [0.0, 0.0, 0.5, 0.95, 1.0, 0.0, 0.0, 0.59, 1.0, 0.59, 0.0, 0.0]
+    segment_time: 10.0
+
+turtle_closeloop:
+  ros__parameters:
+    v_max: 0.4
+    Kw: 1.5
+    Kv: 1.0
+    tolerance_distance: 0.05
+    tolerance_angle: 0.03
+
+turtle_odometry:
+  ros__parameters:
+    r: 0.05
+    L: 0.19
+    update_rate: 100.0

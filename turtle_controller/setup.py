@@ -31,6 +31,7 @@ setup(
             "turtle_closeloop = turtle_controller.turtle_closeloop:main",
             "turtle_odometry = turtle_controller.turtle_odometry:main",
             "semaforo = turtle_controller.semaforo:main",
+            "semaforop = turtle_controller.semaforop.main",
         ],
     },
 )

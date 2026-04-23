@@ -3,7 +3,8 @@
   <node pkg="turtle_controller" exec="path_generator"   name="path_generator"   output="screen"/>
   <node pkg="turtle_controller" exec="turtle_odometry"  name="turtle_odometry"  output="screen"/>
   <node pkg="turtle_controller" exec="turtle_closeloop"        name="turtle_closeloop"        output="screen"/>
-  <node pkg="turtle_controller" exec="semaforo"        name="semaforo"        output="screen"/>
+<!-- <node pkg="turtle_controller" exec="semaforo"        name="semaforo"        output="screen"/> -->
+  <node pkg="turtle_controller" exec="semaforop" name="semaforop" output="screen"/>
   
 
 </launch>
